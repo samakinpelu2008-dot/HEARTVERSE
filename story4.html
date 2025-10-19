@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Best Friend’s Secret 💖 Heartverse</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../assets/logo.png">
+</head>
+<body>
+<nav>
+    <div class="logo-nav"><img src="../assets/logo.png" alt="Heartverse"></div>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><button id="musicToggle">🎵</button></li>
+    </ul>
+</nav>
+
+<main class="story-reader">
+    <h1>My Best Friend’s Secret</h1>
+    <h3>By S.TECH</h3>
+
+    <div class="chapter-nav">
+        <button onclick="prevChapter()">← Previous</button>
+        <span id="chapterTitle">Chapter 1</span>
+        <button onclick="nextChapter()">Next →</button>
+    </div>
+
+    <div id="storyContent"></div>
+</main>
+
+<footer>
+    <p>Created by S.TECH 💖</p>
+</footer>
+
+<script>
+const chapters = [
+`Chapter 1
+Lila had always known Jason well — but one note slipped from his bag and revealed feelings she never expected. Confusion, excitement, and fear tangled together as she realized her best friend might want more than friendship.`
+];
+
+let currentChapter = 0;
+const contentDiv = document.getElementById("storyContent");
+const chapterTitle = document.getElementById("chapterTitle");
+
+function showChapter() {
+    contentDiv.innerHTML = "<p>" + chapters[currentChapter].replace(/\n/g,'<br>') + "</p>";
+    chapterTitle.textContent = "Chapter " + (currentChapter+1);
+}
+
+function nextChapter() {
+    if(currentChapter < chapters.length -1) currentChapter++;
+    showChapter();
+}
+
+function prevChapter() {
+    if(currentChapter > 0) currentChapter--;
+    showChapter();
+}
+
+showChapter();
+
+// Music toggle
+let musicPlaying = false;
+const audio = new Audio('../assets/music.mp3');
+audio.loop = true;
+const musicToggle = document.getElementById("musicToggle");
+musicToggle.addEventListener("click", () => {
+    if (musicPlaying) { audio.pause(); musicPlaying = false; musicToggle.textContent = "🎵"; }
+    else { audio.play(); musicPlaying = true; musicToggle.textContent = "🔇"; }
+});
+</script>
+</body>
+</html>
