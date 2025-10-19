@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Whispers of Seoul 💖 Heartverse</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../assets/logo.png">
+</head>
+<body>
+<nav>
+    <div class="logo-nav"><img src="../assets/logo.png" alt="Heartverse"></div>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><button id="musicToggle">🎵</button></li>
+    </ul>
+</nav>
+
+<main class="story-reader">
+    <h1>Whispers of Seoul</h1>
+    <h3>By S.TECH</h3>
+
+    <div class="chapter-nav">
+        <button onclick="prevChapter()">← Previous</button>
+        <span id="chapterTitle">Chapter 1: Arrival</span>
+        <button onclick="nextChapter()">Next →</button>
+    </div>
+
+    <div id="storyContent"></div>
+</main>
+
+<footer>
+    <p>Created by S.TECH 💖</p>
+</footer>
+
+<script>
+const chapters = [
+`Chapter 1: Arrival
+Soojin stepped off the plane, excitement and nerves buzzing through her. Seoul was everything she imagined and more, ready for a new life as an aspiring singer.`,
+`Chapter 2: First Encounter
+She met Minho, a quiet producer with eyes that seemed to read her soul. Their first conversation was awkward yet memorable.`,
+`Chapter 3: Training Days
+Long hours in the studio brought them closer. Laughter and small arguments created bonds neither expected.`,
+`Chapter 4: Hidden Feelings
+Soojin realized she felt something deeper for Minho. But was it professional or personal?`,
+`Chapter 5: The Festival
+Performing at her first music festival, she noticed Minho in the crowd, cheering silently. Her heart raced.`,
+`Chapter 6: Confession
+One rainy evening, Minho confessed his feelings. Soojin felt the same but feared the complications.`,
+`Chapter 7: Challenges
+A rival singer and industry politics tested their trust and patience.`,
+`Chapter 8: Separation
+A sudden opportunity forced Soojin to leave Seoul temporarily, leaving their relationship uncertain.`,
+`Chapter 9: Reflection
+Distance made their hearts grow fonder. They wrote letters and messages daily.`,
+`Chapter 10: Reunion
+Returning to Seoul, they found each other waiting. Words weren’t enough, only actions.`,
+`Chapter 11: Breaking Barriers
+They faced the industry and public scrutiny together, stronger than ever.`,
+`Chapter 12: Whispers of Seoul
+Under the city lights, hand in hand, they whispered promises of love, ambition, and dreams fulfilled.`
+];
+
+let currentChapter = 0;
+const contentDiv = document.getElementById("storyContent");
+const chapterTitle = document.getElementById("chapterTitle");
+
+function showChapter() {
+    contentDiv.innerHTML = "<p>" + chapters[currentChapter].replace(/\n/g,'<br>') + "</p>";
+    chapterTitle.textContent = "Chapter " + (currentChapter+1);
+}
+
+function nextChapter() {
+    if(currentChapter < chapters.length -1) currentChapter++;
+    showChapter();
+}
+
+function prevChapter() {
+    if(currentChapter > 0) currentChapter--;
+    showChapter();
+}
+
+showChapter();
+
+// Music toggle
+let musicPlaying = false;
+const audio = new Audio('../assets/music.mp3');
+audio.loop = true;
+const musicToggle = document.getElementById("musicToggle");
+musicToggle.addEventListener("click", () => {
+    if (musicPlaying) { audio.pause(); musicPlaying = false; musicToggle.textContent = "🎵"; }
+    else { audio.play(); musicPlaying = true; musicToggle.textContent = "🔇"; }
+});
+</script>
+</body>
+</html>
