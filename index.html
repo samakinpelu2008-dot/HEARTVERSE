@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heartverse 💖</title>
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="assets/logo.png">
+</head>
+<body>
+<!-- Splash Screen -->
+<div id="splash">
+    <div class="splash-content">
+        <img src="assets/logo.png" alt="Heartverse Logo" class="logo">
+        <h1>Welcome to Heartverse</h1>
+        <p>Where every heartbeat tells a story...</p>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div id="main-content" style="display:none;">
+    <nav>
+        <div class="logo-nav"><img src="assets/logo.png" alt="Heartverse"></div>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><input type="text" id="searchBar" placeholder="Search stories..."></li>
+            <li><button id="musicToggle">🎵</button></li>
+        </ul>
+    </nav>
+
+    <!-- Top Picks Carousel -->
+    <section class="carousel">
+        <h2>Top Picks</h2>
+        <div class="carousel-container" id="carouselContainer">
+            <!-- Story covers inserted by JS -->
+        </div>
+    </section>
+
+    <!-- Alphabetical Story Grid -->
+    <section class="story-grid">
+        <h2>All Stories</h2>
+        <div id="storyGrid">
+            <!-- Story cards inserted by JS -->
+        </div>
+    </section>
+
+    <!-- Coming Soon -->
+    <section class="coming-soon">
+        <h2>Coming Soon</h2>
+        <div id="comingSoonGrid"></div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Created by S.TECH 💖</p>
+    </footer>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
