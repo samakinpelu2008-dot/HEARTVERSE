@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Billionaire's Maid 💖 Heartverse</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../assets/logo.png">
+</head>
+<body>
+<nav>
+    <div class="logo-nav"><img src="../assets/logo.png" alt="Heartverse"></div>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><button id="musicToggle">🎵</button></li>
+    </ul>
+</nav>
+
+<main class="story-reader">
+    <h1>The Billionaire's Maid</h1>
+    <h3>By S.TECH</h3>
+    
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <button onclick="prevChapter()">← Previous</button>
+        <span id="chapterTitle">Chapter 1: A New Beginning</span>
+        <button onclick="nextChapter()">Next →</button>
+    </div>
+
+    <!-- Story Content -->
+    <div id="storyContent">
+        <p>Ella had never stepped foot into a mansion before. The moment she walked in, the air felt different — colder, more formal, and yet… exciting. Today was the day she would meet Adrian Cole, the billionaire she would serve.</p>
+        <p>Her heart raced as she adjusted her maid uniform. Little did she know, Adrian had his own plans — and they weren’t exactly about cleaning.</p>
+    </div>
+</main>
+
+<footer>
+    <p>Created by S.TECH 💖</p>
+</footer>
+
+<script>
+const chapters = [
+    "Ella had never stepped foot into a mansion before. The moment she walked in, the air felt different — colder, more formal, and yet… exciting. Today was the day she would meet Adrian Cole, the billionaire she would serve.",
+    "Adrian observed her silently. 'You’ll start immediately,' he said. Ella nodded, trying not to stare too much at his piercing eyes.",
+    "Days passed, and Ella realized there was more to Adrian than his cold exterior. He was kind in ways she couldn’t expect.",
+    "Secrets of the mansion slowly unfolded. A hidden past, family tension, and a growing connection between Ella and Adrian.",
+    "By the fifth chapter, Ella and Adrian could no longer ignore the sparks. Love was beginning to bloom amidst the rules of wealth and power."
+];
+
+let currentChapter = 0;
+const contentDiv = document.getElementById("storyContent");
+const chapterTitle = document.getElementById("chapterTitle");
+
+function showChapter() {
+    contentDiv.innerHTML = "<p>" + chapters[currentChapter] + "</p>";
+    chapterTitle.textContent = "Chapter " + (currentChapter+1);
+}
+
+function nextChapter() {
+    if(currentChapter < chapters.length -1) currentChapter++;
+    showChapter();
+}
+
+function prevChapter() {
+    if(currentChapter > 0) currentChapter--;
+    showChapter();
+}
+
+showChapter();
+
+// Music toggle
+let musicPlaying = false;
+const audio = new Audio('../assets/music.mp3');
+audio.loop = true;
+const musicToggle = document.getElementById("musicToggle");
+musicToggle.addEventListener("click", () => {
+    if (musicPlaying) { audio.pause(); musicPlaying = false; musicToggle.textContent = "🎵"; }
+    else { audio.play(); musicPlaying = true; musicToggle.textContent = "🔇"; }
+});
+</script>
+</body>
+</html>
