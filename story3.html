@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Royal Flame 💖 Heartverse</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../assets/logo.png">
+</head>
+<body>
+<nav>
+    <div class="logo-nav"><img src="../assets/logo.png" alt="Heartverse"></div>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><button id="musicToggle">🎵</button></li>
+    </ul>
+</nav>
+
+<main class="story-reader">
+    <h1>Royal Flame</h1>
+    <h3>By S.TECH</h3>
+
+    <div class="chapter-nav">
+        <button onclick="prevChapter()">← Previous</button>
+        <span id="chapterTitle">Chapter 1: The Forbidden Glance</span>
+        <button onclick="nextChapter()">Next →</button>
+    </div>
+
+    <div id="storyContent"></div>
+</main>
+
+<footer>
+    <p>Created by S.TECH 💖</p>
+</footer>
+
+<script>
+const chapters = [
+`Chapter 1: The Forbidden Glance
+Princess Alara saw him from across the hall — her bodyguard, strong and silent. Their eyes met, and a spark ignited that neither should feel.`,
+`Chapter 2: Secret Meetings
+They began to meet in hidden gardens, exchanging words that were both daring and tender.`,
+`Chapter 3: The Crown’s Rules
+Alara knew the palace would never allow this love. Duty weighed heavier than desire.`,
+`Chapter 4: A Whisper in the Night
+A confession under moonlight changed everything. They could no longer deny their feelings.`,
+`Chapter 5: Danger Looms
+A palace conspiracy threatened to separate them. Trust and courage became their only allies.`,
+`Chapter 6: Flight of the Heart
+They escaped for a night, tasting freedom and forbidden passion.`,
+`Chapter 7: Revelation
+Secrets surfaced — revealing past sins, true intentions, and the depth of their bond.`,
+`Chapter 8: Royal Flame
+Standing before the kingdom, they declared their love, defying rules and embracing destiny.`
+];
+
+let currentChapter = 0;
+const contentDiv = document.getElementById("storyContent");
+const chapterTitle = document.getElementById("chapterTitle");
+
+function showChapter() {
+    contentDiv.innerHTML = "<p>" + chapters[currentChapter].replace(/\n/g,'<br>') + "</p>";
+    chapterTitle.textContent = "Chapter " + (currentChapter+1);
+}
+
+function nextChapter() {
+    if(currentChapter < chapters.length -1) currentChapter++;
+    showChapter();
+}
+
+function prevChapter() {
+    if(currentChapter > 0) currentChapter--;
+    showChapter();
+}
+
+showChapter();
+
+// Music toggle
+let musicPlaying = false;
+const audio = new Audio('../assets/music.mp3');
+audio.loop = true;
+const musicToggle = document.getElementById("musicToggle");
+musicToggle.addEventListener("click", () => {
+    if (musicPlaying) { audio.pause(); musicPlaying = false; musicToggle.textContent = "🎵"; }
+    else { audio.play(); musicPlaying = true; musicToggle.textContent = "🔇"; }
+});
+</script>
+</body>
+</html>
