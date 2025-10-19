@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fated Hearts 💖 Heartverse</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="icon" href="../assets/logo.png">
+</head>
+<body>
+<nav>
+    <div class="logo-nav"><img src="../assets/logo.png" alt="Heartverse"></div>
+    <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><button id="musicToggle">🎵</button></li>
+    </ul>
+</nav>
+
+<main class="story-reader">
+    <h1>Fated Hearts</h1>
+    <h3>By S.TECH</h3>
+    
+    <!-- Chapter Navigation -->
+    <div class="chapter-nav">
+        <button onclick="prevChapter()">← Previous</button>
+        <span id="chapterTitle">Chapter 1: First Encounter</span>
+        <button onclick="nextChapter()">Next →</button>
+    </div>
+
+    <!-- Story Content -->
+    <div id="storyContent"></div>
+</main>
+
+<footer>
+    <p>Created by S.TECH 💖</p>
+</footer>
+
+<script>
+const chapters = [
+`Chapter 1: First Encounter
+Maya bumped into Liam at the coffee shop. Her latte spilled, his papers scattered, and for a moment, time seemed to pause. "I’m so sorry!" she said, blushing as he smiled.`,
+`Chapter 2: Shared Paths
+They kept meeting in unexpected places. A bookstore, a park, the subway. It felt like destiny was nudging them closer each time.`,
+`Chapter 3: A Spark Ignites
+Maya couldn't ignore the flutter in her chest whenever Liam was near. And Liam, he felt something he hadn’t in years — a connection.`,
+`Chapter 4: Confessions
+Late one rainy night, under the dim streetlight, Liam admitted he felt drawn to her in a way he couldn't explain.`,
+`Chapter 5: Doubts and Fear
+Both struggled with their pasts. Would their feelings survive the reality of their complicated lives?`,
+`Chapter 6: Together at Last
+After weeks of hesitation, they finally went on a proper date, sharing laughter and secrets deep into the night.`,
+`Chapter 7: The Challenge
+An unexpected misunderstanding threatened to separate them. Trust would need to overcome fear.`,
+`Chapter 8: Distance
+Circumstances pulled them apart temporarily, testing the strength of their bond.`,
+`Chapter 9: Reunion
+A heartfelt message brought them back together, stronger and more certain than ever.`,
+`Chapter 10: Fated Hearts
+Standing together at the same spot where they first met, Maya and Liam realized their meeting was never by chance. Love had found them.`
+];
+
+let currentChapter = 0;
+const contentDiv = document.getElementById("storyContent");
+const chapterTitle = document.getElementById("chapterTitle");
+
+function showChapter() {
+    contentDiv.innerHTML = "<p>" + chapters[currentChapter].replace(/\n/g,'<br>') + "</p>";
+    chapterTitle.textContent = "Chapter " + (currentChapter+1);
+}
+
+function nextChapter() {
+    if(currentChapter < chapters.length -1) currentChapter++;
+    showChapter();
+}
+
+function prevChapter() {
+    if(currentChapter > 0) currentChapter--;
+    showChapter();
+}
+
+showChapter();
+
+// Music toggle
+let musicPlaying = false;
+const audio = new Audio('../assets/music.mp3');
+audio.loop = true;
+const musicToggle = document.getElementById("musicToggle");
+musicToggle.addEventListener("click", () => {
+    if (musicPlaying) { audio.pause(); musicPlaying = false; musicToggle.textContent = "🎵"; }
+    else { audio.play(); musicPlaying = true; musicToggle.textContent = "🔇"; }
+});
+</script>
+</body>
+</html>
